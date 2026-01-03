@@ -62,6 +62,7 @@
             btnEstimateTime.TabIndex = 2;
             btnEstimateTime.Text = "&Estimate Time";
             btnEstimateTime.UseVisualStyleBackColor = true;
+            btnEstimateTime.Click += btnEstimateTime_Click;
             // 
             // btnExit
             // 

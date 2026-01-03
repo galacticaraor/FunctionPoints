@@ -23,5 +23,11 @@ namespace WinFormsApp1
             Details details = new Details();
             details.ShowDialog();
         }
+
+        private void btnEstimateTime_Click(object sender, EventArgs e)
+        {
+            Details details = new Details();
+            details.ShowDialog();
+        }
     }
 }

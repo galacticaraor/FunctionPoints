@@ -43,11 +43,48 @@
             label5 = new Label();
             numExtenalInterfaces = new NumericUpDown();
             drpExternalInterfacesWeightingFactor = new ComboBox();
+            label6 = new Label();
+            drpBackup = new ComboBox();
+            label7 = new Label();
+            drpCommunications = new ComboBox();
+            label8 = new Label();
+            drpDistributed = new ComboBox();
+            label9 = new Label();
+            drpPerformance = new ComboBox();
+            label10 = new Label();
+            drpHeavily = new ComboBox();
+            label11 = new Label();
+            drpEntry = new ComboBox();
+            label12 = new Label();
+            drpMultiple = new ComboBox();
+            label13 = new Label();
+            drpMaster = new ComboBox();
+            label14 = new Label();
+            drpComplex = new ComboBox();
+            label15 = new Label();
+            drpInternal = new ComboBox();
+            label16 = new Label();
+            drpReusable = new ComboBox();
+            label17 = new Label();
+            drpInstallation = new ComboBox();
+            label18 = new Label();
+            drpOrganizations = new ComboBox();
+            label19 = new Label();
+            drpEase = new ComboBox();
+            btnCalculateFP = new Button();
+            label20 = new Label();
+            txtComplexity = new TextBox();
+            label21 = new Label();
+            numHours = new NumericUpDown();
+            btnEstimate = new Button();
+            btnSave = new Button();
+            btnClose = new Button();
             ((System.ComponentModel.ISupportInitialize)numInputs).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numOutputs).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numInquiries).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numFiles).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numExtenalInterfaces).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numHours).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -165,7 +202,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(22, 134);
+            label5.Location = new Point(20, 134);
             label5.Name = "label5";
             label5.Size = new Size(243, 15);
             label5.TabIndex = 13;
@@ -190,11 +227,411 @@
             drpExternalInterfacesWeightingFactor.TabIndex = 15;
             drpExternalInterfacesWeightingFactor.ValueMember = "Value";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(21, 185);
+            label6.Name = "label6";
+            label6.Size = new Size(292, 15);
+            label6.TabIndex = 16;
+            label6.Text = "Does the system require reliable backup and recovery?";
+            // 
+            // drpBackup
+            // 
+            drpBackup.DisplayMember = "Text";
+            drpBackup.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpBackup.FormattingEnabled = true;
+            drpBackup.Items.AddRange(new object[] { "3", "4", "6" });
+            drpBackup.Location = new Point(446, 177);
+            drpBackup.Name = "drpBackup";
+            drpBackup.Size = new Size(121, 23);
+            drpBackup.TabIndex = 17;
+            drpBackup.ValueMember = "Value";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(21, 214);
+            label7.Name = "label7";
+            label7.Size = new Size(196, 15);
+            label7.TabIndex = 18;
+            label7.Text = "Are data communications required?";
+            // 
+            // drpCommunications
+            // 
+            drpCommunications.DisplayMember = "Text";
+            drpCommunications.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpCommunications.FormattingEnabled = true;
+            drpCommunications.Items.AddRange(new object[] { "3", "4", "6" });
+            drpCommunications.Location = new Point(446, 211);
+            drpCommunications.Name = "drpCommunications";
+            drpCommunications.Size = new Size(121, 23);
+            drpCommunications.TabIndex = 19;
+            drpCommunications.ValueMember = "Value";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(21, 245);
+            label8.Name = "label8";
+            label8.Size = new Size(233, 15);
+            label8.TabIndex = 20;
+            label8.Text = "Are there distributed processing functions?";
+            // 
+            // drpDistributed
+            // 
+            drpDistributed.DisplayMember = "Text";
+            drpDistributed.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpDistributed.FormattingEnabled = true;
+            drpDistributed.Items.AddRange(new object[] { "3", "4", "6" });
+            drpDistributed.Location = new Point(446, 245);
+            drpDistributed.Name = "drpDistributed";
+            drpDistributed.Size = new Size(121, 23);
+            drpDistributed.TabIndex = 21;
+            drpDistributed.ValueMember = "Value";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(21, 275);
+            label9.Name = "label9";
+            label9.Size = new Size(129, 15);
+            label9.TabIndex = 22;
+            label9.Text = "Is performance critical?";
+            // 
+            // drpPerformance
+            // 
+            drpPerformance.DisplayMember = "Text";
+            drpPerformance.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpPerformance.FormattingEnabled = true;
+            drpPerformance.Items.AddRange(new object[] { "3", "4", "6" });
+            drpPerformance.Location = new Point(446, 275);
+            drpPerformance.Name = "drpPerformance";
+            drpPerformance.Size = new Size(121, 23);
+            drpPerformance.TabIndex = 23;
+            drpPerformance.ValueMember = "Value";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(21, 305);
+            label10.Name = "label10";
+            label10.Size = new Size(403, 15);
+            label10.TabIndex = 24;
+            label10.Text = "Will the system run in an existing, heavily utilized operational envrionment?";
+            // 
+            // drpHeavily
+            // 
+            drpHeavily.DisplayMember = "Text";
+            drpHeavily.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpHeavily.FormattingEnabled = true;
+            drpHeavily.Items.AddRange(new object[] { "3", "4", "6" });
+            drpHeavily.Location = new Point(446, 305);
+            drpHeavily.Name = "drpHeavily";
+            drpHeavily.Size = new Size(121, 23);
+            drpHeavily.TabIndex = 25;
+            drpHeavily.ValueMember = "Value";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(21, 335);
+            label11.Name = "label11";
+            label11.Size = new Size(235, 15);
+            label11.TabIndex = 26;
+            label11.Text = "Does the system require on-line data entry?";
+            // 
+            // drpEntry
+            // 
+            drpEntry.DisplayMember = "Text";
+            drpEntry.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpEntry.FormattingEnabled = true;
+            drpEntry.Items.AddRange(new object[] { "3", "4", "6" });
+            drpEntry.Location = new Point(446, 335);
+            drpEntry.Name = "drpEntry";
+            drpEntry.Size = new Size(121, 23);
+            drpEntry.TabIndex = 27;
+            drpEntry.ValueMember = "Value";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(21, 364);
+            label12.Name = "label12";
+            label12.Size = new Size(357, 15);
+            label12.TabIndex = 28;
+            label12.Text = "Does the on-line data entry require multiple screens or operations?";
+            // 
+            // drpMultiple
+            // 
+            drpMultiple.DisplayMember = "Text";
+            drpMultiple.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpMultiple.FormattingEnabled = true;
+            drpMultiple.Items.AddRange(new object[] { "3", "4", "6" });
+            drpMultiple.Location = new Point(446, 364);
+            drpMultiple.Name = "drpMultiple";
+            drpMultiple.Size = new Size(121, 23);
+            drpMultiple.TabIndex = 29;
+            drpMultiple.ValueMember = "Value";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(21, 395);
+            label13.Name = "label13";
+            label13.Size = new Size(181, 15);
+            label13.TabIndex = 30;
+            label13.Text = "Are master files updated on-line?";
+            // 
+            // drpMaster
+            // 
+            drpMaster.DisplayMember = "Text";
+            drpMaster.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpMaster.FormattingEnabled = true;
+            drpMaster.Items.AddRange(new object[] { "3", "4", "6" });
+            drpMaster.Location = new Point(446, 395);
+            drpMaster.Name = "drpMaster";
+            drpMaster.Size = new Size(121, 23);
+            drpMaster.TabIndex = 31;
+            drpMaster.ValueMember = "Value";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(21, 428);
+            label14.Name = "label14";
+            label14.Size = new Size(270, 15);
+            label14.TabIndex = 32;
+            label14.Text = "Are the inputs, outputs, files or inquiries complex?";
+            // 
+            // drpComplex
+            // 
+            drpComplex.DisplayMember = "Text";
+            drpComplex.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpComplex.FormattingEnabled = true;
+            drpComplex.Items.AddRange(new object[] { "3", "4", "6" });
+            drpComplex.Location = new Point(446, 428);
+            drpComplex.Name = "drpComplex";
+            drpComplex.Size = new Size(121, 23);
+            drpComplex.TabIndex = 33;
+            drpComplex.ValueMember = "Value";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(21, 461);
+            label15.Name = "label15";
+            label15.Size = new Size(191, 15);
+            label15.TabIndex = 34;
+            label15.Text = "Is the internal processing complex?";
+            // 
+            // drpInternal
+            // 
+            drpInternal.DisplayMember = "Text";
+            drpInternal.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpInternal.FormattingEnabled = true;
+            drpInternal.Items.AddRange(new object[] { "3", "4", "6" });
+            drpInternal.Location = new Point(446, 461);
+            drpInternal.Name = "drpInternal";
+            drpInternal.Size = new Size(121, 23);
+            drpInternal.TabIndex = 35;
+            drpInternal.ValueMember = "Value";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(21, 493);
+            label16.Name = "label16";
+            label16.Size = new Size(197, 15);
+            label16.TabIndex = 36;
+            label16.Text = "Is the code designed to be reusable?";
+            // 
+            // drpReusable
+            // 
+            drpReusable.DisplayMember = "Text";
+            drpReusable.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpReusable.FormattingEnabled = true;
+            drpReusable.Items.AddRange(new object[] { "3", "4", "6" });
+            drpReusable.Location = new Point(446, 493);
+            drpReusable.Name = "drpReusable";
+            drpReusable.Size = new Size(121, 23);
+            drpReusable.TabIndex = 37;
+            drpReusable.ValueMember = "Value";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(21, 529);
+            label17.Name = "label17";
+            label17.Size = new Size(224, 15);
+            label17.TabIndex = 38;
+            label17.Text = "Are conversion and installation included?";
+            // 
+            // drpInstallation
+            // 
+            drpInstallation.DisplayMember = "Text";
+            drpInstallation.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpInstallation.FormattingEnabled = true;
+            drpInstallation.Items.AddRange(new object[] { "3", "4", "6" });
+            drpInstallation.Location = new Point(446, 529);
+            drpInstallation.Name = "drpInstallation";
+            drpInstallation.Size = new Size(121, 23);
+            drpInstallation.TabIndex = 39;
+            drpInstallation.ValueMember = "Value";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(22, 561);
+            label18.Name = "label18";
+            label18.Size = new Size(271, 15);
+            label18.TabIndex = 40;
+            label18.Text = "Is the system designed for different organizations?";
+            // 
+            // drpOrganizations
+            // 
+            drpOrganizations.DisplayMember = "Text";
+            drpOrganizations.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpOrganizations.FormattingEnabled = true;
+            drpOrganizations.Items.AddRange(new object[] { "3", "4", "6" });
+            drpOrganizations.Location = new Point(446, 561);
+            drpOrganizations.Name = "drpOrganizations";
+            drpOrganizations.Size = new Size(121, 23);
+            drpOrganizations.TabIndex = 41;
+            drpOrganizations.ValueMember = "Value";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(22, 595);
+            label19.Name = "label19";
+            label19.Size = new Size(337, 15);
+            label19.TabIndex = 42;
+            label19.Text = "Is the application designed to facilitate ease of use by the user?";
+            // 
+            // drpEase
+            // 
+            drpEase.DisplayMember = "Text";
+            drpEase.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpEase.FormattingEnabled = true;
+            drpEase.Items.AddRange(new object[] { "3", "4", "6" });
+            drpEase.Location = new Point(446, 595);
+            drpEase.Name = "drpEase";
+            drpEase.Size = new Size(121, 23);
+            drpEase.TabIndex = 43;
+            drpEase.ValueMember = "Value";
+            // 
+            // btnCalculateFP
+            // 
+            btnCalculateFP.Location = new Point(27, 732);
+            btnCalculateFP.Name = "btnCalculateFP";
+            btnCalculateFP.Size = new Size(144, 23);
+            btnCalculateFP.TabIndex = 44;
+            btnCalculateFP.Text = "&Calculate Complexity";
+            btnCalculateFP.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(22, 634);
+            label20.Name = "label20";
+            label20.Size = new Size(70, 15);
+            label20.TabIndex = 45;
+            label20.Text = "Complexity:";
+            // 
+            // txtComplexity
+            // 
+            txtComplexity.Location = new Point(450, 631);
+            txtComplexity.Name = "txtComplexity";
+            txtComplexity.ReadOnly = true;
+            txtComplexity.Size = new Size(100, 23);
+            txtComplexity.TabIndex = 46;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(22, 668);
+            label21.Name = "label21";
+            label21.Size = new Size(101, 15);
+            label21.TabIndex = 47;
+            label21.Text = "Number of hours:";
+            // 
+            // numHours
+            // 
+            numHours.Location = new Point(447, 668);
+            numHours.Name = "numHours";
+            numHours.Size = new Size(120, 23);
+            numHours.TabIndex = 48;
+            // 
+            // btnEstimate
+            // 
+            btnEstimate.Location = new Point(286, 732);
+            btnEstimate.Name = "btnEstimate";
+            btnEstimate.Size = new Size(123, 23);
+            btnEstimate.TabIndex = 49;
+            btnEstimate.Text = "&Estimate Hours";
+            btnEstimate.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            btnSave.Location = new Point(201, 732);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(75, 23);
+            btnSave.TabIndex = 50;
+            btnSave.Text = "&Save";
+            btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnClose
+            // 
+            btnClose.Location = new Point(436, 735);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(75, 23);
+            btnClose.TabIndex = 51;
+            btnClose.Text = "C&lose";
+            btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click;
+            // 
             // Details
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 767);
+            Controls.Add(btnClose);
+            Controls.Add(btnSave);
+            Controls.Add(btnEstimate);
+            Controls.Add(numHours);
+            Controls.Add(label21);
+            Controls.Add(txtComplexity);
+            Controls.Add(label20);
+            Controls.Add(btnCalculateFP);
+            Controls.Add(drpEase);
+            Controls.Add(label19);
+            Controls.Add(drpOrganizations);
+            Controls.Add(label18);
+            Controls.Add(drpInstallation);
+            Controls.Add(label17);
+            Controls.Add(drpReusable);
+            Controls.Add(label16);
+            Controls.Add(drpInternal);
+            Controls.Add(label15);
+            Controls.Add(drpComplex);
+            Controls.Add(label14);
+            Controls.Add(drpMaster);
+            Controls.Add(label13);
+            Controls.Add(drpMultiple);
+            Controls.Add(label12);
+            Controls.Add(drpEntry);
+            Controls.Add(label11);
+            Controls.Add(drpHeavily);
+            Controls.Add(label10);
+            Controls.Add(drpPerformance);
+            Controls.Add(label9);
+            Controls.Add(drpDistributed);
+            Controls.Add(label8);
+            Controls.Add(drpCommunications);
+            Controls.Add(label7);
+            Controls.Add(drpBackup);
+            Controls.Add(label6);
             Controls.Add(drpExternalInterfacesWeightingFactor);
             Controls.Add(numExtenalInterfaces);
             Controls.Add(label5);
@@ -218,6 +655,7 @@
             ((System.ComponentModel.ISupportInitialize)numInquiries).EndInit();
             ((System.ComponentModel.ISupportInitialize)numFiles).EndInit();
             ((System.ComponentModel.ISupportInitialize)numExtenalInterfaces).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numHours).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -239,5 +677,41 @@
         private Label label5;
         private NumericUpDown numExtenalInterfaces;
         private ComboBox drpExternalInterfacesWeightingFactor;
+        private Label label6;
+        private ComboBox drpBackup;
+        private Label label7;
+        private ComboBox drpCommunications;
+        private Label label8;
+        private ComboBox drpDistributed;
+        private Label label9;
+        private ComboBox drpPerformance;
+        private Label label10;
+        private ComboBox drpHeavily;
+        private Label label11;
+        private ComboBox drpEntry;
+        private Label label12;
+        private ComboBox drpMultiple;
+        private Label label13;
+        private ComboBox drpMaster;
+        private Label label14;
+        private ComboBox drpComplex;
+        private Label label15;
+        private ComboBox drpInternal;
+        private Label label16;
+        private ComboBox drpReusable;
+        private Label label17;
+        private ComboBox drpInstallation;
+        private Label label18;
+        private ComboBox drpOrganizations;
+        private Label label19;
+        private ComboBox drpEase;
+        private Button btnCalculateFP;
+        private Label label20;
+        private TextBox txtComplexity;
+        private Label label21;
+        private NumericUpDown numHours;
+        private Button btnEstimate;
+        private Button btnSave;
+        private Button btnClose;
     }
 }
