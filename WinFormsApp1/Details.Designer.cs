@@ -46,7 +46,6 @@
             label6 = new Label();
             drpBackup = new ComboBox();
             label7 = new Label();
-            drpCommunications = new ComboBox();
             label8 = new Label();
             drpDistributed = new ComboBox();
             label9 = new Label();
@@ -79,6 +78,7 @@
             btnEstimate = new Button();
             btnSave = new Button();
             btnClose = new Button();
+            drpCommunications = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)numInputs).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numOutputs).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numInquiries).BeginInit();
@@ -238,15 +238,12 @@
             // 
             // drpBackup
             // 
-            drpBackup.DisplayMember = "Text";
             drpBackup.DropDownStyle = ComboBoxStyle.DropDownList;
             drpBackup.FormattingEnabled = true;
-            drpBackup.Items.AddRange(new object[] { "3", "4", "6" });
             drpBackup.Location = new Point(446, 177);
             drpBackup.Name = "drpBackup";
             drpBackup.Size = new Size(121, 23);
             drpBackup.TabIndex = 17;
-            drpBackup.ValueMember = "Value";
             // 
             // label7
             // 
@@ -256,18 +253,6 @@
             label7.Size = new Size(196, 15);
             label7.TabIndex = 18;
             label7.Text = "Are data communications required?";
-            // 
-            // drpCommunications
-            // 
-            drpCommunications.DisplayMember = "Text";
-            drpCommunications.DropDownStyle = ComboBoxStyle.DropDownList;
-            drpCommunications.FormattingEnabled = true;
-            drpCommunications.Items.AddRange(new object[] { "3", "4", "6" });
-            drpCommunications.Location = new Point(446, 211);
-            drpCommunications.Name = "drpCommunications";
-            drpCommunications.Size = new Size(121, 23);
-            drpCommunications.TabIndex = 19;
-            drpCommunications.ValueMember = "Value";
             // 
             // label8
             // 
@@ -283,7 +268,6 @@
             drpDistributed.DisplayMember = "Text";
             drpDistributed.DropDownStyle = ComboBoxStyle.DropDownList;
             drpDistributed.FormattingEnabled = true;
-            drpDistributed.Items.AddRange(new object[] { "3", "4", "6" });
             drpDistributed.Location = new Point(446, 245);
             drpDistributed.Name = "drpDistributed";
             drpDistributed.Size = new Size(121, 23);
@@ -591,11 +575,21 @@
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
             // 
+            // drpCommunications
+            // 
+            drpCommunications.DropDownStyle = ComboBoxStyle.DropDownList;
+            drpCommunications.FormattingEnabled = true;
+            drpCommunications.Location = new Point(447, 212);
+            drpCommunications.Name = "drpCommunications";
+            drpCommunications.Size = new Size(121, 23);
+            drpCommunications.TabIndex = 52;
+            // 
             // Details
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 767);
+            Controls.Add(drpCommunications);
             Controls.Add(btnClose);
             Controls.Add(btnSave);
             Controls.Add(btnEstimate);
@@ -628,7 +622,6 @@
             Controls.Add(label9);
             Controls.Add(drpDistributed);
             Controls.Add(label8);
-            Controls.Add(drpCommunications);
             Controls.Add(label7);
             Controls.Add(drpBackup);
             Controls.Add(label6);
@@ -680,7 +673,6 @@
         private Label label6;
         private ComboBox drpBackup;
         private Label label7;
-        private ComboBox drpCommunications;
         private Label label8;
         private ComboBox drpDistributed;
         private Label label9;
@@ -713,5 +705,6 @@
         private Button btnEstimate;
         private Button btnSave;
         private Button btnClose;
+        private ComboBox drpCommunications;
     }
 }

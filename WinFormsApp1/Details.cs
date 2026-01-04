@@ -66,59 +66,59 @@ namespace WinFormsApp1
             };
             drpBackup.DisplayMember = "Name";
             drpBackup.ValueMember = "Value";
-            drpBackup.DataSource = factors;
+            drpBackup.DataSource = new BindingSource(factors, null);
 
             drpCommunications.DisplayMember = "Name";
             drpCommunications.ValueMember = "Value";
-            drpCommunications.DataSource = factors;
+            drpCommunications.DataSource = new BindingSource(factors, null);
 
             drpDistributed.DisplayMember = "Name";
             drpDistributed.ValueMember = "Value";
-            drpDistributed.DataSource = factors;
+            drpDistributed.DataSource = new BindingSource(factors, null);
 
             drpPerformance.DisplayMember = "Name";
             drpPerformance.ValueMember = "Value";
-            drpPerformance.DataSource = factors;
+            drpPerformance.DataSource = new BindingSource(factors, null);
 
             drpHeavily.DisplayMember = "Name";
             drpHeavily.ValueMember = "Value";
-            drpHeavily.DataSource = factors;
+            drpHeavily.DataSource = new BindingSource(factors, null);
 
             drpEntry.DisplayMember = "Name";
             drpEntry.ValueMember = "Value";
-            drpEntry.DataSource = factors;
+            drpEntry.DataSource = new BindingSource(factors, null);
 
             drpMultiple.DisplayMember = "Name";
             drpMultiple.ValueMember = "Value";
-            drpMultiple.DataSource = factors;
+            drpMultiple.DataSource = new BindingSource(factors, null);
 
             drpMaster.DisplayMember = "Name";
             drpMaster.ValueMember = "Value";
-            drpMaster.DataSource = factors;
+            drpMaster.DataSource = new BindingSource(factors, null);
 
             drpComplex.DisplayMember = "Name";
             drpComplex.ValueMember = "Value";
-            drpComplex.DataSource = factors;
+            drpComplex.DataSource = new BindingSource(factors, null);
 
             drpInternal.DisplayMember = "Name";
             drpInternal.ValueMember = "Value";
-            drpInternal.DataSource = factors;
+            drpInternal.DataSource = new BindingSource(factors, null);
 
             drpReusable.DisplayMember = "Name";
             drpReusable.ValueMember = "Value";
-            drpReusable.DataSource = factors;
+            drpReusable.DataSource = new BindingSource(factors, null);
 
             drpInstallation.DisplayMember = "Name";
             drpInstallation.ValueMember = "Value";
-            drpInstallation.DataSource = factors;
+            drpInstallation.DataSource = new BindingSource(factors, null);
 
             drpOrganizations.DisplayMember = "Name";
             drpOrganizations.ValueMember = "Value";
-            drpOrganizations.DataSource = factors;
+            drpOrganizations.DataSource = new BindingSource(factors, null);
 
             drpEase.DisplayMember = "Name";
             drpEase.ValueMember = "Value";
-            drpEase.DataSource = factors;
+            drpEase.DataSource = new BindingSource(factors, null);
         }
 
         private void label3_Click(object sender, EventArgs e)
