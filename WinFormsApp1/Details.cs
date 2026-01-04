@@ -17,6 +17,11 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
+        public void LoadForm()
+        {
+            MessageBox.Show("Load Form");
+        }
+
         private void Details_Load(object sender, EventArgs e)
         {
             drpInputWeightingFactor.DisplayMember = "Name";

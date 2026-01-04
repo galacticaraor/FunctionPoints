@@ -363,9 +363,9 @@
             label13.AutoSize = true;
             label13.Location = new Point(21, 395);
             label13.Name = "label13";
-            label13.Size = new Size(181, 15);
+            label13.Size = new Size(159, 15);
             label13.TabIndex = 30;
-            label13.Text = "Are master files updated on-line?";
+            label13.Text = "Will there be online updates?";
             // 
             // drpMaster
             // 
@@ -542,6 +542,7 @@
             // 
             // numHours
             // 
+            numHours.DecimalPlaces = 2;
             numHours.Location = new Point(447, 668);
             numHours.Name = "numHours";
             numHours.Size = new Size(120, 23);

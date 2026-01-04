@@ -33,6 +33,7 @@
             btnAdd = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
             btnClose = new Button();
+            btnSearch = new Button();
             SuspendLayout();
             // 
             // label1
@@ -87,11 +88,21 @@
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
             // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(342, 22);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(75, 23);
+            btnSearch.TabIndex = 5;
+            btnSearch.Text = "&Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            // 
             // Listing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnSearch);
             Controls.Add(btnClose);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(btnAdd);
@@ -110,5 +121,6 @@
         private Button btnAdd;
         private TableLayoutPanel tableLayoutPanel1;
         private Button btnClose;
+        private Button btnSearch;
     }
 }

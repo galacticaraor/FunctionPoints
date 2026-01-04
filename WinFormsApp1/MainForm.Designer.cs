@@ -56,6 +56,7 @@
             // 
             // btnEstimateTime
             // 
+            btnEstimateTime.Enabled = false;
             btnEstimateTime.Location = new Point(223, 154);
             btnEstimateTime.Name = "btnEstimateTime";
             btnEstimateTime.Size = new Size(200, 23);

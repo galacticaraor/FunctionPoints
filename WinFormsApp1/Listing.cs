@@ -20,6 +20,8 @@ namespace WinFormsApp1
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+            Details details = new Details();
+            details.LoadForm();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
