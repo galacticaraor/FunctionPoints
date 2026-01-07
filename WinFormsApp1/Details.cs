@@ -135,6 +135,16 @@ namespace WinFormsApp1
         {
             Close();
         }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
     internal class WeightingFactor
