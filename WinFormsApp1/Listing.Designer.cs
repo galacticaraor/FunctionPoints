@@ -31,7 +31,7 @@
             label1 = new Label();
             txtKeyword = new TextBox();
             btnAdd = new Button();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            tblFPs = new TableLayoutPanel();
             btnClose = new Button();
             btnSearch = new Button();
             SuspendLayout();
@@ -62,21 +62,21 @@
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
-            // tableLayoutPanel1
+            // tblFPs
             // 
-            tableLayoutPanel1.ColumnCount = 5;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Location = new Point(54, 112);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(709, 160);
-            tableLayoutPanel1.TabIndex = 3;
+            tblFPs.ColumnCount = 5;
+            tblFPs.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tblFPs.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tblFPs.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tblFPs.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tblFPs.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tblFPs.Location = new Point(54, 112);
+            tblFPs.Name = "tblFPs";
+            tblFPs.RowCount = 1;
+            tblFPs.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tblFPs.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tblFPs.Size = new Size(709, 160);
+            tblFPs.TabIndex = 3;
             // 
             // btnClose
             // 
@@ -104,12 +104,13 @@
             ClientSize = new Size(800, 450);
             Controls.Add(btnSearch);
             Controls.Add(btnClose);
-            Controls.Add(tableLayoutPanel1);
+            Controls.Add(tblFPs);
             Controls.Add(btnAdd);
             Controls.Add(txtKeyword);
             Controls.Add(label1);
             Name = "Listing";
             Text = "Listing";
+            Load += Listing_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -119,7 +120,7 @@
         private Label label1;
         private TextBox txtKeyword;
         private Button btnAdd;
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tblFPs;
         private Button btnClose;
         private Button btnSearch;
     }

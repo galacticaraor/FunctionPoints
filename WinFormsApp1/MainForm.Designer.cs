@@ -86,6 +86,7 @@
             Controls.Add(btnCalculateComplexity);
             Name = "MainForm";
             Text = "Project Estimator";
+            Load += MainForm_Load;
             ResumeLayout(false);
         }
 
