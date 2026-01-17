@@ -10,5 +10,12 @@ namespace BLL
     {
         public bool Successful { get; set; }
         public string Error { get; set; }
+        public List<FunctionPoint> FunctionPoints { get; set; }
+        public Result()
+        {
+            Successful = true;
+            Error = string.Empty;
+            FunctionPoints = new List<FunctionPoint>();
+        }
     }
 }
