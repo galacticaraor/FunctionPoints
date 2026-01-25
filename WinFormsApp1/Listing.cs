@@ -28,7 +28,6 @@ namespace WinFormsApp1
             this.Close();
             MainForm mainForm = new MainForm();
             mainForm.BindData();
-            mainForm.Show();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

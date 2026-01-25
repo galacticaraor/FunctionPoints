@@ -589,6 +589,7 @@
             btnCalculateComplexity.TabIndex = 45;
             btnCalculateComplexity.Text = "&Calculate Complexity";
             btnCalculateComplexity.UseVisualStyleBackColor = true;
+            btnCalculateComplexity.Click += btnCalculateComplexity_Click;
             // 
             // btnSave
             // 
@@ -598,6 +599,7 @@
             btnSave.TabIndex = 51;
             btnSave.Text = "&Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnEstimateTime
             // 
@@ -607,6 +609,7 @@
             btnEstimateTime.TabIndex = 52;
             btnEstimateTime.Text = "&Estimate Time";
             btnEstimateTime.UseVisualStyleBackColor = true;
+            btnEstimateTime.Click += btnEstimateTime_Click;
             // 
             // btnClose
             // 

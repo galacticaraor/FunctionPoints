@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using DAL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,11 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace WinFormsApp1
 {
     public partial class Details : Form
     {
+        public string ID { get; set; } = "";
         public Details()
         {
             InitializeComponent();
@@ -19,7 +24,7 @@ namespace WinFormsApp1
 
         public void LoadForm()
         {
-            MessageBox.Show("Load Form");
+
         }
 
         private void Details_Load(object sender, EventArgs e)
@@ -145,7 +150,173 @@ namespace WinFormsApp1
         {
 
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            //If the name textbox is not filled in then
+            if (txtName.Text.Trim() == "")
+            {
+                MessageBox.Show("Name is required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            FunctionPoint fp = AssignDataToObject();
+            //Initiate an instance of FunctionPointManager using dependency injection
+            FunctionPointManager FunctionPointManager = new FunctionPointManager(new JsonFunctionPointFile(AppDomain.CurrentDomain.BaseDirectory + "\\FunctionPoints.json"));
+            Result result = new Result();
+            //If the user is adding then
+            if (ID == "")
+            {
+                result = FunctionPointManager.AddFunctionPoint(fp);
+            }
+            else
+            {
+                result = FunctionPointManager.EditFunctionPoint(fp);
+            }
+            //If the call was successful then
+            if (result.Successful)
+            {
+                MessageBox.Show("Data saved successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("An error occurred: " + result.Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void BindData(string id, enOperation operation)
+        {
+            //Assign the ID property for use later when determining whether the user is adding or editing
+            ID = id;
+            FunctionPoint fp;
+            //If the user is retrieving a function point record then
+            if (ID != "")
+            {
+                //Initiate an instance of FunctionPointManager using dependency injection
+                FunctionPointManager FunctionPointManager = new FunctionPointManager(new JsonFunctionPointFile(AppDomain.CurrentDomain.BaseDirectory + "\\FunctionPoints.json"));
+                Result result = FunctionPointManager.GetFunctionPoint(id);
+                //If the call was not successful then
+                if (!result.Successful)
+                {
+                    //Inform the user about the error
+                    MessageBox.Show("An error occurred: " + result.Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                //Get the function point record
+                fp = result.FunctionPoints[0];
+                //Display the Save button
+                btnSave.Visible = true;
+                //Hide the calculate and estimate buttons
+                btnCalculateComplexity.Visible = false;
+                btnEstimateTime.Visible = false;
+            }
+            else
+            {
+                //Create a new instance of FunctionPoint
+                fp = new FunctionPoint(Guid.NewGuid().ToString());
+                //If the user is calculating complexity then
+                if (operation == enOperation.CalculateComplexity)
+                {
+                    //Display the calculate button
+                    btnCalculateComplexity.Visible = true;
+                    //Hide the estimate button
+                    btnEstimateTime.Visible = false;
+                }
+                else
+                {
+                    //Display the estimate button
+                    btnEstimateTime.Visible = true;
+                    //Hide the calculate button
+                    btnCalculateComplexity.Visible = false;
+                }
+                //Hide the save button
+                btnSave.Visible = false;
+            }
+            //Bind the data from the record to the controls
+            txtName.Text = fp.Name;
+            numInputs.Value = fp.NumInputs;
+            drpInputWeightingFactor.SelectedValue = fp.InputsWeightingFactor;
+            numOutputs.Value = fp.NumOutputs;
+            drpOutputWeightingFactor.SelectedValue = fp.OutputsWeightingFactor;
+            numInquiries.Value = fp.NumProcesses;
+            drpInquiriesWeightingFactor.SelectedValue = fp.ProcessesWeightingFactor;
+            numFiles.Value = fp.NumFiles;
+            drpFilesWeightingFactor.SelectedValue = fp.FilesWeightingFactor;
+            numExtenalInterfaces.Value = fp.NumExternals;
+            drpExternalInterfacesWeightingFactor.SelectedValue = fp.ExternalsWeightingFactor;
+            drpBackup.SelectedValue = fp.Backup;
+            drpCommunications.SelectedValue = fp.Communications;
+            drpDistributed.SelectedValue = fp.Distributed;
+            drpPerformance.SelectedValue = fp.Performance;
+            drpHeavily.SelectedValue = fp.Heavily;
+            drpEntry.SelectedValue = fp.Entry;
+            drpMultiple.SelectedValue = fp.Multiple;
+            drpMaster.SelectedValue = fp.Master;
+            drpComplex.SelectedValue = fp.Complex;
+            drpInternal.SelectedValue = fp.Internal;
+            drpReusable.SelectedValue = fp.Reusable;
+            drpInstallation.SelectedValue = fp.Installation;
+            drpOrganizations.SelectedValue = fp.Organizations;
+            drpEase.SelectedValue = fp.Ease;
+            txtComplexity.Text = fp.Complexity.ToString("F2");
+            numHours.Value = (decimal)fp.Hours;
+        }
+
+        private void btnCalculateComplexity_Click(object sender, EventArgs e)
+        {
+            FunctionPoint fp = AssignDataToObject();
+            //Initiate an instance of FunctionPointManager using dependency injection
+            FunctionPointManager FunctionPointManager = new FunctionPointManager(new JsonFunctionPointFile(AppDomain.CurrentDomain.BaseDirectory + "\\FunctionPoints.json"));
+            double complexity = FunctionPointManager.CalculateComplexity(fp);
+            //Bind the complexity to the label on the form
+            txtComplexity.Text = complexity.ToString("F2");
+        }
+
+        private void btnEstimateTime_Click(object sender, EventArgs e)
+        {
+            FunctionPoint fp = AssignDataToObject();
+            //Initiate an instance of FunctionPointManager using dependency injection
+            FunctionPointManager FunctionPointManager = new FunctionPointManager(new JsonFunctionPointFile(AppDomain.CurrentDomain.BaseDirectory + "\\FunctionPoints.json"));
+            double hours = FunctionPointManager.EstimateTime(fp);
+            //Bind the hours to the textbox on the form
+            numHours.Value = (decimal)hours;
+        }
+
+        private FunctionPoint AssignDataToObject()
+        {
+            //Create a new instance of FunctionPoint with the ID in the constructor
+            FunctionPoint fp = new FunctionPoint(ID)
+            {
+                Name = txtName.Text.Trim(),
+                NumInputs = (int)numInputs.Value,
+                InputsWeightingFactor = (int)drpInputWeightingFactor.SelectedValue,
+                NumOutputs = (int)numOutputs.Value,
+                OutputsWeightingFactor = (int)drpOutputWeightingFactor.SelectedValue,
+                NumProcesses = (int)numInquiries.Value,
+                ProcessesWeightingFactor = (int)drpInquiriesWeightingFactor.SelectedValue,
+                NumFiles = (int)numFiles.Value,
+                FilesWeightingFactor = (int)drpFilesWeightingFactor.SelectedValue,
+                NumExternals = (int)numExtenalInterfaces.Value,
+                ExternalsWeightingFactor = (int)drpExternalInterfacesWeightingFactor.SelectedValue,
+                Backup = (int)drpBackup.SelectedValue,
+                Communications = (int)drpCommunications.SelectedValue,
+                Distributed = (int)drpDistributed.SelectedValue,
+                Performance = (int)drpPerformance.SelectedValue,
+                Heavily = (int)drpHeavily.SelectedValue,
+                Entry = (int)drpEntry.SelectedValue,
+                Multiple = (int)drpMultiple.SelectedValue,
+                Master = (int)drpMaster.SelectedValue,
+                Complex = (int)drpComplex.SelectedValue,
+                Internal = (int)drpInternal.SelectedValue,
+                Reusable = (int)drpReusable.SelectedValue,
+                Installation = (int)drpInstallation.SelectedValue,
+                Organizations = (int)drpOrganizations.SelectedValue,
+                Ease = (int)drpEase.SelectedValue
+            };
+            return fp;
+        }
     }
+
 
     internal class WeightingFactor
     {

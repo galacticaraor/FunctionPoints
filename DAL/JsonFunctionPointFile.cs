@@ -21,6 +21,18 @@ namespace DAL
         public Result GetFunctionPoints(string keyword)
         {
             List<FunctionPoint> fps = new List<FunctionPoint>();
+            //If the path doesn’t exist then
+            if (!File.Exists(Path))
+            {
+                //Return an empty list
+                Result result = new Result()
+                {
+                    Error = "",
+                    Successful = true,
+                    FunctionPoints = fps
+                };
+                return result;
+            }
             try
             {
                 //Get the file contents from the path
