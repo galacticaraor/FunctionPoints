@@ -105,7 +105,6 @@
             drpInputWeightingFactor.DisplayMember = "Text";
             drpInputWeightingFactor.DropDownStyle = ComboBoxStyle.DropDownList;
             drpInputWeightingFactor.FormattingEnabled = true;
-            drpInputWeightingFactor.Items.AddRange(new object[] { "3", "4", "6" });
             drpInputWeightingFactor.Location = new Point(398, 42);
             drpInputWeightingFactor.Name = "drpInputWeightingFactor";
             drpInputWeightingFactor.Size = new Size(121, 23);
@@ -140,7 +139,6 @@
             drpOutputWeightingFactor.DisplayMember = "Text";
             drpOutputWeightingFactor.DropDownStyle = ComboBoxStyle.DropDownList;
             drpOutputWeightingFactor.FormattingEnabled = true;
-            drpOutputWeightingFactor.Items.AddRange(new object[] { "3", "4", "6" });
             drpOutputWeightingFactor.Location = new Point(398, 71);
             drpOutputWeightingFactor.Name = "drpOutputWeightingFactor";
             drpOutputWeightingFactor.Size = new Size(121, 23);
@@ -168,7 +166,6 @@
             drpInquiriesWeightingFactor.DisplayMember = "Text";
             drpInquiriesWeightingFactor.DropDownStyle = ComboBoxStyle.DropDownList;
             drpInquiriesWeightingFactor.FormattingEnabled = true;
-            drpInquiriesWeightingFactor.Items.AddRange(new object[] { "3", "4", "6" });
             drpInquiriesWeightingFactor.Location = new Point(399, 102);
             drpInquiriesWeightingFactor.Name = "drpInquiriesWeightingFactor";
             drpInquiriesWeightingFactor.Size = new Size(121, 23);
@@ -196,7 +193,6 @@
             drpFilesWeightingFactor.DisplayMember = "Text";
             drpFilesWeightingFactor.DropDownStyle = ComboBoxStyle.DropDownList;
             drpFilesWeightingFactor.FormattingEnabled = true;
-            drpFilesWeightingFactor.Items.AddRange(new object[] { "3", "4", "6" });
             drpFilesWeightingFactor.Location = new Point(400, 133);
             drpFilesWeightingFactor.Name = "drpFilesWeightingFactor";
             drpFilesWeightingFactor.Size = new Size(121, 23);
@@ -224,7 +220,6 @@
             drpExternalInterfacesWeightingFactor.DisplayMember = "Text";
             drpExternalInterfacesWeightingFactor.DropDownStyle = ComboBoxStyle.DropDownList;
             drpExternalInterfacesWeightingFactor.FormattingEnabled = true;
-            drpExternalInterfacesWeightingFactor.Items.AddRange(new object[] { "3", "4", "6" });
             drpExternalInterfacesWeightingFactor.Location = new Point(401, 162);
             drpExternalInterfacesWeightingFactor.Name = "drpExternalInterfacesWeightingFactor";
             drpExternalInterfacesWeightingFactor.Size = new Size(121, 23);

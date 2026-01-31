@@ -32,6 +32,64 @@ namespace WinFormsApp1
 
         private void Details_Load(object sender, EventArgs e)
         {
+            
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            //If the name textbox is not filled in then
+            if (txtName.Text.Trim() == "")
+            {
+                MessageBox.Show("Name is required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            FunctionPoint fp = AssignDataToObject();
+            //Initiate an instance of FunctionPointManager using dependency injection
+            FunctionPointManager FunctionPointManager = new FunctionPointManager(new JsonFunctionPointFile(AppDomain.CurrentDomain.BaseDirectory + "\\FunctionPoints.json"));
+            double complexity = FunctionPointManager.CalculateComplexity(fp);
+            fp.Complexity = complexity;
+            Result result = new Result();
+            //If the user is adding then
+            if (ID == "")
+            {
+                result = FunctionPointManager.AddFunctionPoint(fp);
+            }
+            else
+            {
+                result = FunctionPointManager.EditFunctionPoint(fp);
+            }
+            //If the call was successful then
+            if (result.Successful)
+            {
+                MessageBox.Show("Data saved successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Listing listing = (Listing)Application.OpenForms["Listing"];
+                listing.BindData("");
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("An error occurred: " + result.Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void BindData(string id, enOperation operation)
+        {
+            //Populate the dropdowns
             drpInputWeightingFactor.DisplayMember = "Name";
             drpInputWeightingFactor.ValueMember = "Value";
             drpInputWeightingFactor.DataSource = new WeightingFactor[] {
@@ -41,7 +99,8 @@ namespace WinFormsApp1
             };
             drpOutputWeightingFactor.DisplayMember = "Name";
             drpOutputWeightingFactor.ValueMember = "Value";
-            drpOutputWeightingFactor.DataSource = new WeightingFactor[] {
+            drpOutputWeightingFactor.DataSource = new WeightingFactor[]
+            {
                 new WeightingFactor { Name = "Simple", Value = 4 },
                 new WeightingFactor { Name = "Average", Value = 5 },
                 new WeightingFactor { Name = "Complex", Value = 7 }
@@ -132,62 +191,6 @@ namespace WinFormsApp1
             drpEase.DisplayMember = "Name";
             drpEase.ValueMember = "Value";
             drpEase.DataSource = new BindingSource(factors, null);
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label22_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            //If the name textbox is not filled in then
-            if (txtName.Text.Trim() == "")
-            {
-                MessageBox.Show("Name is required", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            FunctionPoint fp = AssignDataToObject();
-            //Initiate an instance of FunctionPointManager using dependency injection
-            FunctionPointManager FunctionPointManager = new FunctionPointManager(new JsonFunctionPointFile(AppDomain.CurrentDomain.BaseDirectory + "\\FunctionPoints.json"));
-            double complexity = FunctionPointManager.CalculateComplexity(fp);
-            fp.Complexity = complexity;
-            Result result = new Result();
-            //If the user is adding then
-            if (ID == "")
-            {
-                result = FunctionPointManager.AddFunctionPoint(fp);
-            }
-            else
-            {
-                result = FunctionPointManager.EditFunctionPoint(fp);
-            }
-            //If the call was successful then
-            if (result.Successful)
-            {
-                MessageBox.Show("Data saved successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Listing listing = (Listing)Application.OpenForms["Listing"];
-                listing.BindData("");
-                Close();
-            }
-            else
-            {
-                MessageBox.Show("An error occurred: " + result.Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void BindData(string id, enOperation operation)
-        {
             //Assign the ID property for use later when determining whether the user is adding or editing
             ID = id;
             FunctionPoint fp = new FunctionPoint("");
