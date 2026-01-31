@@ -45,7 +45,7 @@ namespace BLL.Tests
             //Arrange
             var mock = new Mock<IFunctionPointFile>();
             Result result = NominalLoad();
-            mock.Setup(m => m.GetFunctionPoints("")).Returns(result);
+            mock.Setup(m => m.GetFunctionPoints()).Returns(result);
             List<FunctionPoint> fps = result.FunctionPoints;
             Result addedResult = new Result()
             {
@@ -67,7 +67,7 @@ namespace BLL.Tests
             //Arrange
             var mock = new Mock<IFunctionPointFile>();
             Result result = ErrorLoad();
-            mock.Setup(m => m.GetFunctionPoints("")).Returns(result);
+            mock.Setup(m => m.GetFunctionPoints()).Returns(result);
             List<FunctionPoint> fps = result.FunctionPoints;
             Result addedResult = new Result()
             {
@@ -89,7 +89,7 @@ namespace BLL.Tests
             var mock = new Mock<IFunctionPointFile>();
             Result result = NominalLoad();
             List<FunctionPoint> fps = result.FunctionPoints;
-            mock.Setup(m => m.GetFunctionPoints("")).Returns(result);
+            mock.Setup(m => m.GetFunctionPoints()).Returns(result);
             FunctionPoint fp = fps[0];
             fp.Name = "Updated Name";
             Result addedResult = new Result()
@@ -112,7 +112,7 @@ namespace BLL.Tests
             var mock = new Mock<IFunctionPointFile>();
             Result result = ErrorLoad();
             List<FunctionPoint> fps = result.FunctionPoints;
-            mock.Setup(m => m.GetFunctionPoints("")).Returns(result);
+            mock.Setup(m => m.GetFunctionPoints()).Returns(result);
             FunctionPoint fp = new FunctionPoint("1");
             fp.Name = "Updated Name";
             Result addedResult = new Result()
@@ -135,7 +135,7 @@ namespace BLL.Tests
             var mock = new Mock<IFunctionPointFile>();
             Result result = NominalLoad();
             List<FunctionPoint> fps = result.FunctionPoints;
-            mock.Setup(m => m.GetFunctionPoints("")).Returns(result);
+            mock.Setup(m => m.GetFunctionPoints()).Returns(result);
             Result addedResult = new Result()
             {
                 Error = "",
@@ -156,7 +156,7 @@ namespace BLL.Tests
             var mock = new Mock<IFunctionPointFile>();
             Result result = ErrorLoad();
             List<FunctionPoint> fps = result.FunctionPoints;
-            mock.Setup(m => m.GetFunctionPoints("")).Returns(result);
+            mock.Setup(m => m.GetFunctionPoints()).Returns(result);
             Result addedResult = new Result()
             {
                 Error = "Error",
@@ -177,7 +177,7 @@ namespace BLL.Tests
             //Arrange
             var mock = new Mock<IFunctionPointFile>();
             Result result = NominalLoad();
-            mock.Setup(m => m.GetFunctionPoints("")).Returns(result);
+            mock.Setup(m => m.GetFunctionPoints()).Returns(result);
             FunctionPointManager manager = new FunctionPointManager(mock.Object);
             //Act
             Result result2 = manager.GetFunctionPoints("");
@@ -199,7 +199,7 @@ namespace BLL.Tests
                     new FunctionPoint("1") { Name = "name1", Complexity = 0, Hours = 0 }
                 }
             };
-            mock.Setup(m => m.GetFunctionPoints("name1")).Returns(result);
+            mock.Setup(m => m.GetFunctionPoints()).Returns(result);
             FunctionPointManager manager = new FunctionPointManager(mock.Object);
             //Act
             Result result2 = manager.GetFunctionPoints("name1");
@@ -213,7 +213,7 @@ namespace BLL.Tests
             //Arrange
             var mock = new Mock<IFunctionPointFile>();
             Result result = ErrorLoad();
-            mock.Setup(m => m.GetFunctionPoints("")).Returns(result);
+            mock.Setup(m => m.GetFunctionPoints()).Returns(result);
             FunctionPointManager manager = new FunctionPointManager(mock.Object);
             //Act
             Result result2 = manager.GetFunctionPoints("");
@@ -227,7 +227,7 @@ namespace BLL.Tests
             //Arrange
             var mock = new Mock<IFunctionPointFile>();
             Result result = NominalLoad();
-            mock.Setup(m => m.GetFunctionPoints("")).Returns(result);
+            mock.Setup(m => m.GetFunctionPoints()).Returns(result);
             FunctionPointManager manager = new FunctionPointManager(mock.Object);
             //Act
             Result result2 = manager.GetFunctionPoints("");
@@ -241,7 +241,7 @@ namespace BLL.Tests
             //Arrange
             var mock = new Mock<IFunctionPointFile>();
             Result result = ErrorLoad();
-            mock.Setup(m => m.GetFunctionPoint("1")).Returns(result);
+            mock.Setup(m => m.GetFunctionPoints()).Returns(result);
             FunctionPointManager manager = new FunctionPointManager(mock.Object);
             //Act
             Result result2 = manager.GetFunctionPoint("1");
@@ -255,7 +255,7 @@ namespace BLL.Tests
             //Arrange
             var mock = new Mock<IFunctionPointFile>();
             Result result = ErrorLoad();
-            mock.Setup(m => m.GetFunctionPoint("99")).Returns(result);
+            mock.Setup(m => m.GetFunctionPoints()).Returns(result);
             FunctionPointManager manager = new FunctionPointManager(mock.Object);
             //Act
             Result result2 = manager.GetFunctionPoint("99");
@@ -307,7 +307,7 @@ namespace BLL.Tests
             //Arrange
             var mock = new Mock<IFunctionPointFile>();
             Result result = NominalLoad();
-            mock.Setup(m => m.GetFunctionPoints("")).Returns(result);
+            mock.Setup(m => m.GetFunctionPoints()).Returns(result);
             FunctionPointManager manager = new FunctionPointManager(mock.Object);
             FunctionPoint fp = new FunctionPoint("")
             {

@@ -18,7 +18,7 @@ namespace DAL
             Path = path;
         }
 
-        public Result GetFunctionPoints(string keyword)
+        public Result GetFunctionPoints()
         {
             List<FunctionPoint> fps = new List<FunctionPoint>();
             //If the path doesn’t exist then
@@ -43,18 +43,6 @@ namespace DAL
                 }
                 //Deserialize the JSON
                 List<FunctionPoint> rawFPs = JsonConvert.DeserializeObject<List<FunctionPoint>>(contents);
-                //Loop through the results
-                foreach (FunctionPoint fp in rawFPs)
-                {
-                    //If there is no keyword or the name of the record contains the keyword then
-                    if (string.IsNullOrEmpty(keyword) || fp.Name.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
-                    {
-                        //Add the record to the list
-                        fps.Add(fp);
-                    }
-                }
-                //Sort the list by complexity in ascending order
-                fps = fps.OrderBy(fp => fp.Complexity).ToList();
                 Result result = new Result()
                 {
                     Error = "",
@@ -104,52 +92,6 @@ namespace DAL
                     Error = ex.Message,
                     Successful = false,
                     FunctionPoints = functionPoints
-                };
-                return result;
-            }
-        }
-
-        public Result GetFunctionPoint(string id)
-        {
-            List<FunctionPoint> fp = new List<FunctionPoint>();
-            try
-            {
-                //Get the file contents from the path
-                string contents = "";
-                using (TextReader reader = new StreamReader(Path))
-                {
-                    contents = reader.ReadToEnd();
-                }
-                //Deserialize the JSON
-                List<FunctionPoint> rawFPs = JsonConvert.DeserializeObject<List<FunctionPoint>>(contents);
-                //Loop through the results
-                foreach (FunctionPoint functionPoint in rawFPs)
-                {
-                    //If ID matches then
-                    if (functionPoint.ID == id)
-                    {
-                        //Add the record to the list
-                        fp.Add(functionPoint);
-                        break;
-                    }
-                }
-                //Return the results with a successful result
-                Result result = new Result()
-                {
-                    Error = "",
-                    Successful = true,
-                    FunctionPoints = fp
-                };
-                return result;
-            }
-            catch (Exception ex)
-            {
-                //Return the results with an error
-                Result result = new Result()
-                {
-                    Error = ex.Message,
-                    Successful = false,
-                    FunctionPoints = fp
                 };
                 return result;
             }

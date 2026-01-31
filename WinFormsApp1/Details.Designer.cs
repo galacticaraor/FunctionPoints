@@ -70,9 +70,9 @@
             drpOrganizations = new ComboBox();
             label19 = new Label();
             drpEase = new ComboBox();
-            label20 = new Label();
+            lblComplexity = new Label();
             txtComplexity = new TextBox();
-            label21 = new Label();
+            lblHours = new Label();
             numHours = new NumericUpDown();
             drpCommunications = new ComboBox();
             lblName = new Label();
@@ -509,14 +509,14 @@
             drpEase.TabIndex = 43;
             drpEase.ValueMember = "Value";
             // 
-            // label20
+            // lblComplexity
             // 
-            label20.AutoSize = true;
-            label20.Location = new Point(24, 662);
-            label20.Name = "label20";
-            label20.Size = new Size(70, 15);
-            label20.TabIndex = 45;
-            label20.Text = "Complexity:";
+            lblComplexity.AutoSize = true;
+            lblComplexity.Location = new Point(24, 662);
+            lblComplexity.Name = "lblComplexity";
+            lblComplexity.Size = new Size(70, 15);
+            lblComplexity.TabIndex = 45;
+            lblComplexity.Text = "Complexity:";
             // 
             // txtComplexity
             // 
@@ -526,14 +526,14 @@
             txtComplexity.Size = new Size(100, 23);
             txtComplexity.TabIndex = 46;
             // 
-            // label21
+            // lblHours
             // 
-            label21.AutoSize = true;
-            label21.Location = new Point(24, 696);
-            label21.Name = "label21";
-            label21.Size = new Size(101, 15);
-            label21.TabIndex = 47;
-            label21.Text = "Number of hours:";
+            lblHours.AutoSize = true;
+            lblHours.Location = new Point(24, 696);
+            lblHours.Name = "lblHours";
+            lblHours.Size = new Size(101, 15);
+            lblHours.TabIndex = 47;
+            lblHours.Text = "Number of hours:";
             // 
             // numHours
             // 
@@ -619,6 +619,7 @@
             btnClose.TabIndex = 53;
             btnClose.Text = "C&lose";
             btnClose.UseVisualStyleBackColor = true;
+            btnClose.Click += btnClose_Click_1;
             // 
             // Details
             // 
@@ -630,9 +631,9 @@
             Controls.Add(lblName);
             Controls.Add(drpCommunications);
             Controls.Add(numHours);
-            Controls.Add(label21);
+            Controls.Add(lblHours);
             Controls.Add(txtComplexity);
-            Controls.Add(label20);
+            Controls.Add(lblComplexity);
             Controls.Add(drpEase);
             Controls.Add(label19);
             Controls.Add(drpOrganizations);
@@ -733,9 +734,9 @@
         private ComboBox drpOrganizations;
         private Label label19;
         private ComboBox drpEase;
-        private Label label20;
+        private Label lblComplexity;
         private TextBox txtComplexity;
-        private Label label21;
+        private Label lblHours;
         private NumericUpDown numHours;
         private ComboBox drpCommunications;
         private Label lblName;

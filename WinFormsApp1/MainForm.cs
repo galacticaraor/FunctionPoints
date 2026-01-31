@@ -19,18 +19,21 @@ namespace WinFormsApp1
         private void btnViewTaskHistory_Click(object sender, EventArgs e)
         {
             Listing listing = new Listing();
+            listing.BindData("");
             listing.ShowDialog();
         }
 
         private void btnCalculateComplexity_Click(object sender, EventArgs e)
         {
             Details details = new Details();
+            details.BindData("", enOperation.CalculateComplexity);
             details.ShowDialog();
         }
 
         private void btnEstimateTime_Click(object sender, EventArgs e)
         {
             Details details = new Details();
+            details.BindData("", enOperation.EstimateTime);
             details.ShowDialog();
         }
 

@@ -18,7 +18,7 @@ namespace BLL
 
         public Result AddFunctionPoint(FunctionPoint fp)
         {
-            Result result = _file.GetFunctionPoints("");
+            Result result = _file.GetFunctionPoints();
             //If the call was successful then
             if (result.Successful)
             {
@@ -33,7 +33,7 @@ namespace BLL
 
         public Result EditFunctionPoint(FunctionPoint fp)
         {
-            Result result = _file.GetFunctionPoints("");
+            Result result = _file.GetFunctionPoints();
             //If the call was successful then
             if (result.Successful)
             {
@@ -56,7 +56,7 @@ namespace BLL
 
         public Result DeleteFunctionPoint(string id)
         {
-            Result result = _file.GetFunctionPoints("");
+            Result result = _file.GetFunctionPoints();
             //If the call was successful then
             if (result.Successful)
             {
@@ -70,12 +70,28 @@ namespace BLL
 
         public Result GetFunctionPoints(string keyword)
         {
-            return _file.GetFunctionPoints(keyword);
+            Result result = _file.GetFunctionPoints();
+            //If there is a keyword then
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                //Filter the results by keyword
+                List<FunctionPoint> filteredFPs = result.FunctionPoints
+                    .Where(f => f.Name.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                                f.Name.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
+                    .ToList();
+                result.FunctionPoints = filteredFPs;
+            }
+            //Sort the list by complexity in ascending order
+            result.FunctionPoints = result.FunctionPoints.OrderBy(f => f.Complexity).ToList();
+            return result;
         }
 
         public Result GetFunctionPoint(string id)
         {
-            return _file.GetFunctionPoint(id);
+            Result result = _file.GetFunctionPoints();
+            //Filter the results by ID
+            result.FunctionPoints = result.FunctionPoints.Where(f => f.ID == id).ToList();
+            return result;
         }
 
         public double CalculateComplexity(FunctionPoint fp)
@@ -95,7 +111,7 @@ namespace BLL
 
         public double EstimateTime(FunctionPoint fp)
         {
-            List<FunctionPoint> fps = _file.GetFunctionPoints("").FunctionPoints;
+            List<FunctionPoint> fps = _file.GetFunctionPoints().FunctionPoints;
             double x1 = 0, y1 = 0, x2 = 0, y2 = 0;
             double complexity = CalculateComplexity(fp);
             //If fp.Complexity<the first complexity then

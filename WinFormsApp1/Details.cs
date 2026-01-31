@@ -4,13 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace WinFormsApp1
 {
@@ -136,11 +139,6 @@ namespace WinFormsApp1
 
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void label22_Click(object sender, EventArgs e)
         {
 
@@ -188,49 +186,59 @@ namespace WinFormsApp1
         {
             //Assign the ID property for use later when determining whether the user is adding or editing
             ID = id;
-            FunctionPoint fp;
-            //If the user is retrieving a function point record then
-            if (ID != "")
+            FunctionPoint fp = new FunctionPoint("");
+            switch (operation)
             {
-                //Initiate an instance of FunctionPointManager using dependency injection
-                FunctionPointManager FunctionPointManager = new FunctionPointManager(new JsonFunctionPointFile(AppDomain.CurrentDomain.BaseDirectory + "\\FunctionPoints.json"));
-                Result result = FunctionPointManager.GetFunctionPoint(id);
-                //If the call was not successful then
-                if (!result.Successful)
-                {
-                    //Inform the user about the error
-                    MessageBox.Show("An error occurred: " + result.Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                //Get the function point record
-                fp = result.FunctionPoints[0];
-                //Display the Save button
-                btnSave.Visible = true;
-                //Hide the calculate and estimate buttons
-                btnCalculateComplexity.Visible = false;
-                btnEstimateTime.Visible = false;
-            }
-            else
-            {
-                //Create a new instance of FunctionPoint
-                fp = new FunctionPoint(Guid.NewGuid().ToString());
-                //If the user is calculating complexity then
-                if (operation == enOperation.CalculateComplexity)
-                {
+                case enOperation.Maintenance:
+                    //If the user is retrieving a function point record then
+                    if (ID != "")
+                    {
+                        FunctionPointManager FunctionPointManager = new FunctionPointManager(new JsonFunctionPointFile(AppDomain.CurrentDomain.BaseDirectory + "\\FunctionPoints.json"));
+                        Result result = FunctionPointManager.GetFunctionPoint(id);
+                        if (!result.Successful)
+                        {
+                            //Inform the user about the error
+                            MessageBox.Show("An error occurred: " + result.Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        //Get the function point record
+                        fp = result.FunctionPoints[0];
+                    }
+                    //Display the name controls
+                    lblName.Visible = true;
+                    txtName.Visible = true;
+                    //Hide the calculate and estimate controls
+                    btnCalculateComplexity.Visible = false;
+                    btnEstimateTime.Visible = false;
+                    //Display the save button
+                    btnSave.Visible = true;
+                    break;
+                case enOperation.CalculateComplexity:
+                    //Hide the name controls
+                    lblName.Visible = false;
+                    txtName.Visible = false;
                     //Display the calculate button
                     btnCalculateComplexity.Visible = true;
                     //Hide the estimate button
                     btnEstimateTime.Visible = false;
-                }
-                else
-                {
-                    //Display the estimate button
+                    //Hide the hours controls
+                    lblHours.Visible = false;
+                    numHours.Visible = false;
+                    //Hide the save button
+                    btnSave.Visible = false;
+                    break;
+                case enOperation.EstimateTime:
+                    //Hide the name controls
+                    lblName.Visible = false;
+                    txtName.Visible = false;
+                    //Hide the calculate controls
+                    lblComplexity.Visible = false;
+                    txtComplexity.Visible = false;
+                    //Display the estimate controls
                     btnEstimateTime.Visible = true;
-                    //Hide the calculate button
-                    btnCalculateComplexity.Visible = false;
-                }
-                //Hide the save button
-                btnSave.Visible = false;
+                    //Hide the save button
+                    btnSave.Visible = false;
+                    break;
             }
             //Bind the data from the record to the controls
             txtName.Text = fp.Name;
@@ -314,6 +322,13 @@ namespace WinFormsApp1
                 Ease = (int)drpEase.SelectedValue
             };
             return fp;
+        }
+
+        private void btnClose_Click_1(object sender, EventArgs e)
+        {
+            MainForm mainForm = (MainForm)Application.OpenForms["MainForm"];
+            mainForm.BindData();
+            Close();
         }
     }
 

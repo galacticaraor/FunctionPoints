@@ -8,8 +8,7 @@ namespace BLL
 {
     public interface IFunctionPointFile
     {
-        Result GetFunctionPoints(string keyword);
+        Result GetFunctionPoints();
         Result SaveFunctionPoints(List<FunctionPoint> functionPoints);
-        Result GetFunctionPoint(string id);
     }
 }
