@@ -160,6 +160,8 @@ namespace WinFormsApp1
             FunctionPoint fp = AssignDataToObject();
             //Initiate an instance of FunctionPointManager using dependency injection
             FunctionPointManager FunctionPointManager = new FunctionPointManager(new JsonFunctionPointFile(AppDomain.CurrentDomain.BaseDirectory + "\\FunctionPoints.json"));
+            double complexity = FunctionPointManager.CalculateComplexity(fp);
+            fp.Complexity = complexity;
             Result result = new Result();
             //If the user is adding then
             if (ID == "")
@@ -174,6 +176,8 @@ namespace WinFormsApp1
             if (result.Successful)
             {
                 MessageBox.Show("Data saved successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Listing listing = (Listing)Application.OpenForms["Listing"];
+                listing.BindData("");
                 Close();
             }
             else
@@ -234,6 +238,7 @@ namespace WinFormsApp1
                     //Hide the calculate controls
                     lblComplexity.Visible = false;
                     txtComplexity.Visible = false;
+                    btnCalculateComplexity.Visible = false;
                     //Display the estimate controls
                     btnEstimateTime.Visible = true;
                     //Hide the save button
@@ -285,6 +290,8 @@ namespace WinFormsApp1
             FunctionPoint fp = AssignDataToObject();
             //Initiate an instance of FunctionPointManager using dependency injection
             FunctionPointManager FunctionPointManager = new FunctionPointManager(new JsonFunctionPointFile(AppDomain.CurrentDomain.BaseDirectory + "\\FunctionPoints.json"));
+            double complexity = FunctionPointManager.CalculateComplexity(fp);
+            fp.Complexity = complexity;
             double hours = FunctionPointManager.EstimateTime(fp);
             //Bind the hours to the textbox on the form
             numHours.Value = (decimal)hours;
@@ -292,8 +299,14 @@ namespace WinFormsApp1
 
         private FunctionPoint AssignDataToObject()
         {
+            string id = ID;
+            //If the user is adding then
+            if (id == "")
+            {
+                id = Guid.NewGuid().ToString();
+            }
             //Create a new instance of FunctionPoint with the ID in the constructor
-            FunctionPoint fp = new FunctionPoint(ID)
+            FunctionPoint fp = new FunctionPoint(id)
             {
                 Name = txtName.Text.Trim(),
                 NumInputs = (int)numInputs.Value,
@@ -319,7 +332,9 @@ namespace WinFormsApp1
                 Reusable = (int)drpReusable.SelectedValue,
                 Installation = (int)drpInstallation.SelectedValue,
                 Organizations = (int)drpOrganizations.SelectedValue,
-                Ease = (int)drpEase.SelectedValue
+                Ease = (int)drpEase.SelectedValue,
+                Complexity = double.Parse(txtComplexity.Text),
+                Hours = (double)numHours.Value
             };
             return fp;
         }

@@ -37,15 +37,17 @@ namespace BLL
             //If the call was successful then
             if (result.Successful)
             {
-                //Loop through the records
                 List<FunctionPoint> fps = result.FunctionPoints;
-                foreach (FunctionPoint existingFP in fps)
+                int n = fps.Count;
+                //Loop through the records
+                for(int i=0; i < n; i++)
                 {
+                    FunctionPoint existingFP = fps[i];
                     //If a match was found then
                     if (existingFP.ID == fp.ID)
                     {
                         //Update the object in the collection
-                        FunctionPoint found = fps.Find(f => f.ID == existingFP.ID);
+                        fps[i] = fp;
                         break;
                     }
                 }
@@ -152,7 +154,11 @@ namespace BLL
                     }
                 }
             }
-            double m = (y2 - y1) / (x2 - x1);
+            double m = 0;
+            if (x2 - x1 > 0)
+            {
+                m = (y2 - y1) / (x2 - x1);
+            }
             double hours = y1 + m * (complexity - x1);
             return hours;
         }

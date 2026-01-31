@@ -34,6 +34,9 @@
             tblFPs = new TableLayoutPanel();
             btnClose = new Button();
             btnSearch = new Button();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -66,15 +69,14 @@
             // 
             tblFPs.ColumnCount = 5;
             tblFPs.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tblFPs.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tblFPs.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tblFPs.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tblFPs.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tblFPs.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tblFPs.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tblFPs.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            tblFPs.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
             tblFPs.Location = new Point(54, 112);
             tblFPs.Name = "tblFPs";
             tblFPs.RowCount = 1;
-            tblFPs.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tblFPs.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tblFPs.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tblFPs.Size = new Size(709, 160);
             tblFPs.TabIndex = 3;
             // 
@@ -96,12 +98,43 @@
             btnSearch.TabIndex = 5;
             btnSearch.Text = "&Search";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(54, 94);
+            label2.Name = "label2";
+            label2.Size = new Size(39, 15);
+            label2.TabIndex = 6;
+            label2.Text = "Name";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(407, 93);
+            label3.Name = "label3";
+            label3.Size = new Size(67, 15);
+            label3.TabIndex = 7;
+            label3.Text = "Complexity";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(479, 93);
+            label4.Name = "label4";
+            label4.Size = new Size(39, 15);
+            label4.TabIndex = 8;
+            label4.Text = "Hours";
             // 
             // Listing
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(btnSearch);
             Controls.Add(btnClose);
             Controls.Add(tblFPs);
@@ -123,5 +156,8 @@
         private TableLayoutPanel tblFPs;
         private Button btnClose;
         private Button btnSearch;
+        private Label label2;
+        private Label label3;
+        private Label label4;
     }
 }

@@ -42,7 +42,7 @@ namespace DAL
                     contents = reader.ReadToEnd();
                 }
                 //Deserialize the JSON
-                List<FunctionPoint> rawFPs = JsonConvert.DeserializeObject<List<FunctionPoint>>(contents);
+                fps = JsonConvert.DeserializeObject<List<FunctionPoint>>(contents);
                 Result result = new Result()
                 {
                     Error = "",

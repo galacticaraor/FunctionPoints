@@ -96,12 +96,12 @@ namespace WinFormsApp1
                     Label lblName = new Label() { Text = fp.Name, AutoSize = true };
                     Label lblComplexity = new Label() { Text = fp.Complexity.ToString(), AutoSize = true };
                     Label lblHours = new Label() { Text = fp.Hours.ToString(), AutoSize = true };
-                    Button btnEdit=new Button() { Text = "Edit", AutoSize = true };
+                    Button btnEdit = new Button() { Text = "Edit", AutoSize = true };
                     btnEdit.Click += delegate
                     {
                         btnEdit_Click(fp.ID);
                     };
-                    Button btnDelete=new Button() { Text = "Delete", AutoSize = true };
+                    Button btnDelete = new Button() { Text = "Delete", AutoSize = true };
                     btnDelete.Click += delegate
                     {
                         btnDelete_Click(fp.ID);
@@ -119,6 +119,11 @@ namespace WinFormsApp1
                 //Display an error message
                 MessageBox.Show("An error occurred: " + result.Error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            BindData(txtKeyword.Text.Trim());
         }
     }
 }
