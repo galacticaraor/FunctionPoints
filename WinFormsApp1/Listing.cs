@@ -26,7 +26,7 @@ namespace WinFormsApp1
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-            MainForm mainForm = new MainForm();
+            MainForm mainForm = (MainForm)Application.OpenForms["MainForm"];
             mainForm.BindData();
         }
 
